@@ -30,6 +30,8 @@ return [
     */
 
     'env' => env('APP_ENV', 'production'),
+    'frontend_url' => env('FRONT_END_URL'),
+    'logo' => env('LOGO'),
 
     /*
     |--------------------------------------------------------------------------
@@ -70,7 +72,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'America/Argentina/Buenos_Aires',
 
     /*
     |--------------------------------------------------------------------------
@@ -165,9 +167,12 @@ return [
          */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
+        //App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+
+        //Intervention\Image\ImageServiceProvider::class,
+
     ])->toArray(),
 
     /*
@@ -183,6 +188,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
+        //'Image' => Intervention\Image\Facades\Image::class,
     ])->toArray(),
 
 ];
