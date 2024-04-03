@@ -19,7 +19,7 @@ class PasswordsController extends Controller
     {
         // Rate limit the number of requests from any user to prevent server overload, with a maximum of 100 requests per minute.
         $this->middleware(['throttle:api']);
-        $this->middleware(['auth:sanctum'], ['except' => ['forgot_password', 'forgot_password']]);
+        $this->middleware(['auth:sanctum'], ['except' => ['forgot_password', 'reset_password']]);
 
     }
     public function forgot_password(Request $request)
