@@ -22,7 +22,7 @@ class AeController extends Controller
     ];
     public function __construct()
     {
-        $this->middleware(['throttle:api', 'auth:sanctum', 'api']);
+        $this->middleware(['throttle:20,1', 'api']);
         $this->middleware(['auth:sanctum'], ['except' => ['register_ae']]);
     }
 
@@ -55,7 +55,7 @@ class AeController extends Controller
             }
 
             // Build the response
-            if (isset ($data['error'])) {
+            if (isset($data['error'])) {
                 return response()->json(['type' => self::$AE['NON_AE']], Response::HTTP_ACCEPTED);
             }
 
@@ -65,13 +65,13 @@ class AeController extends Controller
                 'lastMonth' => $data['fecha_cierre_ae'],
             ];
 
-            if (isset ($data['fecha_renovacion'])) {
+            if (isset($data['fecha_renovacion'])) {
                 $type = self::$AE['FINISHABLE'];
                 $dates['fifthMonth'] = $data['fecha_renovacion'];
                 $dates['sixthMonth'] = $data['fecha_vencimiento'];
             }
 
-            if (isset ($data['fecha_revocacion_ae'])) {
+            if (isset($data['fecha_revocacion_ae'])) {
                 $type = self::$AE['FINALIZED'];
                 $dates['renewalMonth'] = $data['fecha_revocacion_ae'];
             }
@@ -116,7 +116,7 @@ class AeController extends Controller
             }
 
             // Verificar si existe la propiedad 'id_autoexcluido' en la respuesta
-            if (isset ($data['id_autoexcluido'])) {
+            if (isset($data['id_autoexcluido'])) {
                 return response()->json(['status' => $data['id_autoexcluido']], Response::HTTP_OK);
             } else {
                 return response()->json(['status' => $data], Response::HTTP_OK);

@@ -15,7 +15,7 @@ class GuestController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('throttle:api');
+        $this->middleware('throttle:20,1');
     }
 
     /**

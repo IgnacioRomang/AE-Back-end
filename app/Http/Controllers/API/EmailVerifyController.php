@@ -18,7 +18,7 @@ class EmailVerifyController extends Controller
     public function __construct()
     {
         // Rate limit the number of requests from any user to prevent server overload, with a maximum of 100 requests per minute.
-        $this->middleware(['throttle:api']);
+        $this->middleware(['throttle:20,1']);
         // Apply 'verified' middleware to all methods except the specified ones.
         $this->middleware(['verified'], ['except' => ['email_verify', 'email_send']]);
         $this->middleware('auth:sanctum');
