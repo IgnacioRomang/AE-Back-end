@@ -139,7 +139,6 @@ class AeController extends Controller
                 'API-Token' => $token,
                 'X-API-Key' => env('APP_SISTEMON_KEY'),
             ])->post($url . '/agregar', $postData);
-            Log::info(json_encode($response->json()));
             return $response;
 
         } catch (Exception $e) {

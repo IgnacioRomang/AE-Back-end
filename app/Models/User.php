@@ -7,8 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-;
-use App\Models\EmailToVerify;
+
 
 use Illuminate\Contracts\Auth\CanResetPassword;
 
@@ -17,10 +16,6 @@ class User extends Authenticatable implements MustVerifyEmail, CanResetPassword
     use HasApiTokens, HasFactory, Notifiable;
     protected $username = 'cuil';
 
-    public function emailToVerify()
-    {
-        return $this->hasOne(EmailToVErify::class);
-    }
 
     /**
      * The attributes that are mydatabasemass assignable.
